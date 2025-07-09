@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Special Gift For You!</title>
+    <style>
+        body {
+            background-color: #000;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            text-align: center;
+            color: #fff;
+        }
+        
+        #surpriseButton {
+            padding: 25px 50px;
+            font-size: 32px;
+            background: #808000; 
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(128, 128, 0, 0.7);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        #surpriseButton:hover {
+            background: #6B8E23;
+            transform: scale(1.1);
+            box-shadow: 0 0 35px rgba(107, 142, 35, 0.9);
+        }
+        
+        #surpriseButton:active {
+            transform: scale(0.95);
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        #gifContainer {
+            margin-top: 40px;
+            max-width: 85%;
+            display: none;
+        }
+        
+        #gifImage {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(128, 128, 0, 0.5);
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 28px;
+            top: -30px;
+            animation: fall linear forwards;
+            color: #ff4d6d;
+            text-shadow: 0 0 10px #ff0033;
+            opacity: 0.9;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
+        }
+        
+        h1 {
+            color: #808000;
+            font-size: 46px;
+            margin-bottom: 40px;
+            text-shadow: 0 0 15px rgba(128, 128, 0, 0.8);
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <h1>:3</h1>
+    
+    <button id="surpriseButton">press the button</button>
+    
+    <div id="gifContainer">
+        
+        <img id="gifImage" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2g0cmVwNXBxcWcycHV1Yzg1amZjOTg4dndocTB1dm1qcnptYzA1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/R3cU0nceo8pQKxP6LT/giphy.gif" alt="Surprise!">
+        
+    </div>
+
+    <script>
+        const button = document.getElementById('surpriseButton');
+        const gifContainer = document.getElementById('gifContainer');
+        const gifImage = document.getElementById('gifImage');
+        
+        button.addEventListener('click', function() {
+            
+            createHearts();
+            
+            
+            this.classList.add('hidden');
+            
+            
+            setTimeout(() => {
+                gifContainer.style.display = 'block';
+                
+                gifImage.style.opacity = '0';
+                gifImage.style.transition = 'opacity 1.5s ease-in';
+                setTimeout(() => {
+                    gifImage.style.opacity = '1';
+                }, 100);
+            }, 800);
+        });
+        
+        function createHearts() {
+            for(let i = 0; i < 88; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '♥';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                heart.style.opacity = Math.random() * 0.5 + 0.5;
+                
+                document.body.appendChild(heart);
+                
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
